@@ -27,9 +27,9 @@ const Navbar = () => {
             { lang === 'english' ? 'Home' : 'Inicio' }
               <i className='material-icons-outlined pl-3'>home</i>
             </Link>
-            <Link to={'/#services'} className='navbar-item'>
-            { lang === 'english' ? 'Services' : 'Servicios' }
-              <i className='material-icons-outlined pl-3'>handyman</i>
+            <Link to={'/#bio'} className='navbar-item'>
+            Bio
+              <i className='material-icons-outlined pl-3'>fingerprint</i>
             </Link>
             <Link to={'/#projects'} className='navbar-item'>
             { lang === 'english' ? 'Projects' : 'Proyectos' }
