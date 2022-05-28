@@ -20,9 +20,9 @@ const Navbar = () => {
             <span></span>
           </a>
         </div>
-        <div className={`navbar-menu ${isActive ? 'is-active' : ''}`} id='navbarMenu'>
+        <div className={`navbar-menu ${isActive ? 'is-active has-background-grey' : ''}`} id='navbarMenu'>
           <div className="navbar-start"></div>
-          <div className="navbar-end has-text-right mr-5 is-justify-content-center">
+          <div className="navbar-end has-text-right mx-5 is-justify-content-center">
             <Link to={'/'} className='navbar-item' >
             { lang === 'english' ? 'Home' : 'Inicio' }
               <i className='material-icons-outlined pl-3'>home</i>
@@ -44,7 +44,7 @@ const Navbar = () => {
             { lang === 'english' ? 'Contact' : 'Contacto' }
               <i className='material-icons-outlined pl-3'>email</i>
             </Link>
-            <a onClick={ switchLang } type='button'>
+            <a onClick={ switchLang } type='button' className='navbar-item'>
               { lang === 'english' ? 'Español' : 'English' }
               <i className='material-icons-outlined pl-3'>translate</i>
             </a>

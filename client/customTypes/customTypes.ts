@@ -1,3 +1,8 @@
 type Language = 'english' | 'spanish'
 
-export type { Language }
+type socialMedia = {
+    name: string,
+    link: string
+}
+
+export type { Language, socialMedia }
