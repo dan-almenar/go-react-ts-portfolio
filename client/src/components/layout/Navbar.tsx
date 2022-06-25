@@ -20,7 +20,7 @@ const Navbar = () => {
             <span></span>
           </a>
         </div>
-        <div className={`navbar-menu ${isActive ? 'is-active has-background-grey' : ''}`} id='navbarMenu'>
+        <div className={`navbar-menu ${isActive ? 'is-active has-background-grey-light' : ''}`} id='navbarMenu'>
           <div className="navbar-start"></div>
           <div className="navbar-end has-text-right mx-5 is-justify-content-center">
             <Link to={'/'} className='navbar-item' >

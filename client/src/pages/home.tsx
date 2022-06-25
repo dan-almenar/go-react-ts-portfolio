@@ -34,7 +34,7 @@ const HomePage = (props: any) => {
         <BioSummary />
       </div>
     </section>
-    <section className="section has-background-grey">
+    <section className="section has-background-grey-light">
       <div className="box has-background-black">
         <p className="subtitle has-text-white">
           { lang === 'english' ?
