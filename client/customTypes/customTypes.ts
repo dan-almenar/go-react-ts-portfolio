@@ -5,4 +5,10 @@ type socialMedia = {
     link: string
 }
 
-export type { Language, socialMedia }
+type FBUser = {
+    token: string | null,
+    uid: string | null,
+    isAdmin: boolean
+}
+
+export type { Language, socialMedia, FBUser }

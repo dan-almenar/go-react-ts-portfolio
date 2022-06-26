@@ -21,6 +21,7 @@ import (
 
 const (
 	port        = ":8080"
+	homeURL     = "/"
 	bioURL      = "/bio"
 	blogURL     = "/blog"
 	projectsURL = "/projects"
@@ -28,25 +29,29 @@ const (
 	adminURL    = "/admin"
 )
 
-type gatewayHandler struct {
+type homeHandler struct {
 	l *log.Logger
 }
 
-func newGatewayHandler(l *log.Logger) *gatewayHandler {
-	return &gatewayHandler{l}
+func newHomeHandler(l *log.Logger) *homeHandler {
+	return &homeHandler{l}
 }
+
+/*
+el método serveHTTP del homeHandler se encarga de
+embeber la aplicación react en el servidor y lanzarla
+cuando se recibe una petición al homeURL ("/").
+
+La directiva //go:embed le indica a go la ruta de la
+aplicación react.
+*/
 
 //go:embed dist
 var reactApp embed.FS
 
-func (h gatewayHandler) serveHTTP(w http.ResponseWriter, r *http.Request) {
+func (h homeHandler) serveHTTP(w http.ResponseWriter, r *http.Request) {
 	fsys := fs.FS(reactApp)
 	reactApp, _ := fs.Sub(fsys, "dist")
-	// if err != nil {
-	// 	h.l.Println("error getting static content:", err)
-	// 	http.Error(w, "error getting static content", http.StatusInternalServerError)
-	// 	return
-	// }
 
 	http.FileServer(http.FS(reactApp)).ServeHTTP(w, r)
 }
@@ -55,7 +60,7 @@ func main() {
 	fmt.Printf("Gateway server listening on port %v\n", port)
 	l := log.New(os.Stdout, "gateway server", log.LstdFlags)
 
-	homeHandler := newGatewayHandler(l)
+	homeHandler := newHomeHandler(l)
 	adminHandler := adminswitch.NewAdminHandler(l)
 	bioHandler := bioswitch.NewBioHandler(l)
 	blogHandler := blogswitch.NewBlogHandler(l)
@@ -63,7 +68,7 @@ func main() {
 	projectsHandler := projectsswitch.NewProjectsHandler(l)
 
 	serveMux := http.NewServeMux()
-	serveMux.HandleFunc("/", homeHandler.serveHTTP)
+	serveMux.HandleFunc(homeURL, homeHandler.serveHTTP)
 	serveMux.HandleFunc(adminURL, adminHandler.ServeHTTP)
 	serveMux.HandleFunc(bioURL, bioHandler.ServeHTTP)
 	serveMux.HandleFunc(blogURL, blogHandler.ServeHTTP)

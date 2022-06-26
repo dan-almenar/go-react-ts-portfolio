@@ -1,1 +1,2 @@
-#temp
+#firebase config:
+client/src/utils/firebaseUtils/firebaseConfig.tsx
