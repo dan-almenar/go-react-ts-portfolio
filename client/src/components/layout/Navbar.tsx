@@ -14,6 +14,12 @@ const Navbar = () => {
             <span className='has-text-white is-size-5'>A</span>
             <span className='has-text-info is-size-5'>W</span>
           </div>
+          <div className="navbar-item">
+            <a onClick={ switchLang } type='button' className='navbar-item has-text-white'>
+              { lang === 'english' ? 'Español' : 'English' }
+              <i className='material-icons-outlined pl-3'>translate</i>
+            </a>
+          </div>
           <a role="button" onClick={() => setIsActive(!isActive)} className={`navbar-burger ${isActive ? 'is-active' : ''}`} aria-label="menu" aria-expanded="false" data-target="navbarMenu">
             <span></span>
             <span></span>
@@ -27,11 +33,11 @@ const Navbar = () => {
             { lang === 'english' ? 'Home' : 'Inicio' }
               <i className='material-icons-outlined pl-3'>home</i>
             </Link>
-            <Link to={'/#bio'} className='navbar-item'>
+            <Link to={'/bio'} className='navbar-item'>
             Bio
               <i className='material-icons-outlined pl-3'>fingerprint</i>
             </Link>
-            <Link to={'/#projects'} className='navbar-item'>
+            <Link to={'/projects'} className='navbar-item'>
             { lang === 'english' ? 'Projects' : 'Proyectos' }
               <i className='material-icons-outlined pl-3'>code</i>
             </Link>                                                
@@ -39,15 +45,10 @@ const Navbar = () => {
             Blog
               <i className='material-icons-outlined pl-3'>article</i>
             </Link>
-            {/* arreglar */}
-            <Link to={'/#contact'} className='navbar-item'>
+            <Link to={'/contact'} className='navbar-item'>
             { lang === 'english' ? 'Contact' : 'Contacto' }
               <i className='material-icons-outlined pl-3'>email</i>
             </Link>
-            <a onClick={ switchLang } type='button' className='navbar-item'>
-              { lang === 'english' ? 'Español' : 'English' }
-              <i className='material-icons-outlined pl-3'>translate</i>
-            </a>
           </div>
         </div>
     </div>

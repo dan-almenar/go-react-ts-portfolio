@@ -1,23 +1,26 @@
 import { createContext, useState } from "react";
-import { FBUser } from "../../../customTypes/customTypes";
+import { AppUser } from "../../../customTypes/customTypes";
+import { getAppUser, logInAppUser } from "../../utils/firebaseUtils/authUtils";
 
 
-const UserContext = createContext({'user': {uid: null, token: null, isAdmin: false } as FBUser, 'logInUser': (email: string, password: string) => {}})
+const AuthContext = createContext({'user': {isUser: false, userData: null } as AppUser, 'getUser': () => {}, logInUser: (email: string, password: string) => {}})
 
-const UserProvider = ({ children }: any) => {
-    const [user, setUser] = useState({uid: null, token: null, isAdmin: false} as FBUser)
+const AuthProvider = ({ children }: any) => {
+    const [user, setUser] = useState({isUser: false, userData: null} as AppUser)
 
-    // TODO
-    const logInUser = (email: string, password: string) => {
-        console.log("log in user")
-        setUser({uid: email, token: password, isAdmin: true})
+    const getUser = () => {
+        setUser(getAppUser())
+    }
+
+    const logInUser = async (email: string, password: string) => {
+        setUser(await logInAppUser(email, password))
     }
 
     return (
-        <UserContext.Provider value={{ user, logInUser }}>
+        <AuthContext.Provider value={{ user, getUser, logInUser }}>
             {children}
-        </UserContext.Provider>
+        </AuthContext.Provider>
     )
 }
 
-export { UserContext, UserProvider }
+export { AuthContext, AuthProvider }

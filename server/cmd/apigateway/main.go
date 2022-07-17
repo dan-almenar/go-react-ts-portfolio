@@ -22,11 +22,11 @@ import (
 const (
 	port        = ":8080"
 	homeURL     = "/"
-	bioURL      = "/bio"
-	blogURL     = "/blog"
-	projectsURL = "/projects"
-	contactURL  = "/contact"
-	adminURL    = "/admin"
+	bioURL      = "/api/bio"
+	blogURL     = "/api/blog"
+	projectsURL = "/api/projects"
+	contactURL  = "/api/contact"
+	adminURL    = "/api/admin"
 )
 
 type homeHandler struct {

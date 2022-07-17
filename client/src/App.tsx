@@ -1,9 +1,12 @@
 import './App.css'
-import { useLocation } from 'react-router-dom'
+import { useLocation, Outlet } from 'react-router-dom'
 import HomePage from './pages/home'
 import AdminPage from './pages/admin'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
+import BioPage from './pages/bioPage'
+import ProjectsPage from './pages/projects'
+import ProjectDetailPage from './pages/projectDetailPage'
 
 function App(props: any) {
   const location = useLocation()
@@ -13,6 +16,10 @@ function App(props: any) {
       <Navbar />
       {location.pathname === '/' && <HomePage />}
       {location.pathname === '/admin' && <AdminPage />}
+      {location.pathname === '/bio' && <BioPage />}
+      {location.pathname === '/projects' && <ProjectsPage />}
+      {location.pathname === 'project/:id' && <ProjectDetailPage />}
+      <Outlet />
       <Footer />
     </div>
   )

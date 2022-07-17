@@ -4,7 +4,7 @@ import { Language } from "../../../customTypes/customTypes";
 const StoreContext = createContext({'lang': 'english' as Language, 'switchLang': () => {}})
 
 const StoreProvider = ({ children }: any) => {
-    const [lang, setLanguage] = useState('english' as Language)
+    const [lang, setLanguage] = useState('spanish' as Language)
 
     const switchLang = () => {
         lang === 'english' ? setLanguage('spanish') : setLanguage('english')

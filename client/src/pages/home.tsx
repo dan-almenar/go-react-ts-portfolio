@@ -4,6 +4,7 @@ import ContactIcons from '../components/home/ContactIcons'
 import ProfileCard from '../components/home/ProfileCard'
 import { StoreContext } from '../customHooks/store/useStore'
 import { socialMedia } from '../../customTypes/customTypes'
+import { Link } from 'react-router-dom'
 
 const HomePage = (props: any) => {
   const { lang } = useContext(StoreContext)
@@ -28,19 +29,20 @@ const HomePage = (props: any) => {
 
   return (
     <>
-    <section className='hero is-fullheight home-hero-section'>
+    <section className='hero is-fullheight home-hero-section fade-in'>
       <div className="hero-header">
         <ProfileCard />
         <BioSummary />
+        <div className="has-text-left m-5">
+        <p className="subtitle is-size-4 has-text-white m-5">
+          { lang === 'english' ? 'Go to my ' : 'Ir a mi ' }
+          <Link className='has-text-warning' to={'/bio'}>Bio </Link>
+        </p>
+      </div>        
       </div>
     </section>
-    <section className="section has-background-grey-light">
-      <div className="box has-background-black">
-        <p className="subtitle has-text-white">
-          { lang === 'english' ?
-          'You may also find me on the following platforms:'
-          : 'Puedes encontrarme en las siguientes plataformas:'}
-        </p>
+    <section className="section has-background-grey">
+      <div className="box has-background-warning">
         <ContactIcons brands={rrss} />
       </div>
     </section>

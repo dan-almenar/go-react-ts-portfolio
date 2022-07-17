@@ -85,7 +85,7 @@ func (h projectsHandler) handlePut(w http.ResponseWriter, r *http.Request) error
 		return err
 	}
 
-	_, err = dbClient.Collection("test").Doc(docId).Set(r.Context(), project)
+	_, err = dbClient.Collection("projects").Doc(docId).Set(r.Context(), project)
 	if err != nil {
 		h.l.Printf("Error updating document: %v\n", err)
 		http.Error(w, "Error updating document", http.StatusInternalServerError)
@@ -131,7 +131,7 @@ func (h projectsHandler) handlePost(w http.ResponseWriter, r *http.Request) erro
 		return err
 	}
 
-	doc, _, err := dbClient.Collection("test").Add(r.Context(), project)
+	doc, _, err := dbClient.Collection("projects").Add(r.Context(), project)
 	if err != nil {
 		h.l.Printf("Error creating document: %v\n", err)
 		http.Error(w, "Error creating document", http.StatusInternalServerError)
@@ -165,7 +165,7 @@ func (h projectsHandler) handleDelete(w http.ResponseWriter, r *http.Request) er
 		return err
 	}
 
-	_, err = dbClient.Collection("test").Doc(docId).Delete(r.Context())
+	_, err = dbClient.Collection("projects").Doc(docId).Delete(r.Context())
 	if err != nil {
 		h.l.Printf("Error deleting document: %v\n", err)
 		http.Error(w, "Error deleting document", http.StatusInternalServerError)

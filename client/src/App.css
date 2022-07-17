@@ -11,3 +11,36 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+.btn-as-link {
+  background: none;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.twinkle {
+  animation: twinkle 1s infinite;
+}
+.fade-in {
+  animation: fadeIn 1.5s;
+}
+
+/* animations */
+@keyframes twinkle {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

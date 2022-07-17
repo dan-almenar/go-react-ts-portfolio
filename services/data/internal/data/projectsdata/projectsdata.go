@@ -11,6 +11,7 @@ type ProjectDescription struct {
 }
 
 type ProjectSchema struct {
+	Image         string                 `json:"image"`
 	LangsAndTools []string               `json:"langsAndTools"`
 	Links         map[string]interface{} `json:"links"`
 	Project       struct {
