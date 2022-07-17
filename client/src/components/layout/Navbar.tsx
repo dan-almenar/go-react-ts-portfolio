@@ -16,8 +16,8 @@ const Navbar = () => {
           </div>
           <div className="navbar-item">
             <a onClick={ switchLang } type='button' className='navbar-item has-text-white'>
-              { lang === 'english' ? 'Español' : 'English' }
-              <i className='material-icons-outlined pl-3'>translate</i>
+              <i className='material-icons-outlined pr-3'>translate</i>
+              { lang === 'english' ? 'Español' : 'English' }              
             </a>
           </div>
           <a role="button" onClick={() => setIsActive(!isActive)} className={`navbar-burger ${isActive ? 'is-active' : ''}`} aria-label="menu" aria-expanded="false" data-target="navbarMenu">
