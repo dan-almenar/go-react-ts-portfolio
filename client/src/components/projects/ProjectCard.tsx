@@ -13,21 +13,20 @@ function ProjectCard(props: {project: any, getProjectId: Function}) {
                 <img src={project.data.image} alt={`${project.data.project[lang].title} screenshot`} />
                 </figure>
             </div>
-            <div className="card-content has-background-dark has-text-left p-3">
+            <div className="card-content has-background-dark is-flex is-justify-content-space-between"> {/*has-text-left p-6*/}
                 <a
-                className='has-text-warning is-size-4'
+                className='has-text-warning is-size-6'
                 href={project.data.links.url}
                 target="_blank"
                 >
                     {project.data.project[lang].title}
                 </a>
+                <i onClick={() => getProjectId(project.id)} className="material-icons-outlined has-text-warning btn">
+                    info
+                </i>
             </div>
             <div className="card-footer">
-                <button onClick={() => getProjectId(project.id)} className="button">
-                    <i className="material-icons-outlined">
-                        info
-                    </i>                    
-                </button>
+
             </div>
         </div>
     </div>

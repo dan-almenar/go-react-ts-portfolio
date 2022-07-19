@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { useLocation } from 'react-router-dom'
+import PortfolioAppDetails from '../components/projects/PortfolioAppDetails'
 import { StoreContext } from '../customHooks/store/useStore'
 
 function ProjectDetailPage() {
@@ -8,6 +9,7 @@ function ProjectDetailPage() {
     const project: any = location.state as any
   return (
     <div className='hero is-fullheight is-dark'>
+        { project.project.id != 'profile_app' && (
         <div className="columns container m-5 fade-in">
             <div className="column container has-text-left m-5">
                 <h1 className="title">
@@ -42,6 +44,10 @@ function ProjectDetailPage() {
                 </p>
             </div>
         </div>
+        )}
+        { project.project.id === 'profile_app' && (
+            <PortfolioAppDetails portfolio={project} />
+        )}
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Loading from '../components/layout/Loading'
 import ProjectCard from '../components/projects/ProjectCard'
 import { useGet } from '../customHooks/api/useAPI'
@@ -11,6 +11,7 @@ function ProjectsPage() {
 
   // contenido estático de la página
   const [pageDescription, setPageDescription] = useState('')
+  const [portfolioDescription, setPortfolioDescription] = useState('')
   useEffect(() => {
     if (lang === 'english') {
       setPageDescription(
@@ -18,11 +19,23 @@ function ProjectsPage() {
         + "It is not ment to be an exhaustive list of my work, "
         + "but rather a selection of projects I have worked on."
       )
+      setPortfolioDescription(
+        "The first project I'd like to refer to is this very website. "
+        + "Even thought it may seem like a regular profile page, "
+        + "it was created as a Fullstack project that implements "
+        + "a wide range of technologies."
+      )
     } else {
       setPageDescription(
         "Esta página muestra algunos de mis proyectos. "
         + "No es una lista exhaustiva de mis trabajos, "
         + "sino una selección de proyectos en los que he trabajado."
+      )
+      setPortfolioDescription(
+        "El primer proyecto al que quiero referirme es este mismo sitio web. "
+        + "Aunque pueda parecer una página de perfil común, "
+        + "fue creado como un proyecto Fullstack que implementa "
+        + "una amplia gama de tecnologías."
       )
     }
   }, [lang])
@@ -32,14 +45,19 @@ function ProjectsPage() {
   const splitProjects = () => {
     let projectsWithImages = []
     let projectsWithoutImages = []
+    let portfolioApp: any = {}
     if (projectsData.data) {
       for (let project of projectsData.data) {
-        project.data.image != null ? projectsWithImages.push(project) : projectsWithoutImages.push(project)
+        if (project.id !== 'profile_app') {
+          project.data.image != null && project.id != 'profile_app' ? projectsWithImages.push(project) : projectsWithoutImages.push(project)
+        } else {
+          portfolioApp = project
+        }
       }
     }
-    return { projectsWithImages, projectsWithoutImages }
+    return { projectsWithImages, projectsWithoutImages, portfolioApp }
   }
-  const { projectsWithImages, projectsWithoutImages } = splitProjects()
+  const { projectsWithImages, projectsWithoutImages, portfolioApp } = splitProjects()
 
   // manejo de errores al cargar la data
   const navigate = useNavigate()
@@ -89,6 +107,18 @@ function ProjectsPage() {
         <p className="subtitle is-size-5 has-text-left m-5">
           { pageDescription }
         </p>
+        <p className="subtitle is-size-5 has-text-left m-5">
+          { portfolioDescription }
+        </p>
+        <p className="subtitle is-size-5 has-text-left m-5">
+          { lang === 'english' ? "To see more details about this website, click "
+          : "Para ver más detalles sobre este sitio web, haga click "
+          }
+          <button onClick={() => getProjectId(portfolioApp.id)}
+          className="btn-as-link subtitle is-size-5 has-text-warning">
+            { lang === 'english' ? "here" : "aquí" }
+          </button>
+        </p>
       </div>
       <div className="container columns m-5 is-multiline is-justify-content-center">
         { projectsWithImages.map((project, index) => {
@@ -99,7 +129,6 @@ function ProjectsPage() {
           )
         })}
       </div>
-      {/* { selectedProject != '' && isModalOpen && <ProjectDetailsModal project={projectsData.data.find((project: any) => project.id === selectedProject)} toggleModal={toggleModal} /> }       */}
     </>
     }
     </div>    

@@ -11,6 +11,9 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+.btn {
+  cursor: pointer;
+}
 .btn-as-link {
   background: none;
   border: none;
@@ -22,6 +25,10 @@
 }
 .fade-in {
   animation: fadeIn 1.5s;
+}
+.img-sixty {
+  width: 60%; 
+  height: 60%;
 }
 
 /* animations */
