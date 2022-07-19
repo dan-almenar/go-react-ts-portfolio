@@ -120,14 +120,33 @@ function ProjectsPage() {
           </button>
         </p>
       </div>
-      <div className="container columns m-5 is-multiline is-justify-content-center">
-        { projectsWithImages.map((project, index) => {
-          return (
-            <div className="column container is-one-third" key={index}>
-              <ProjectCard project={project} getProjectId={getProjectId} />
-            </div>
-          )
-        })}
+      <div>
+        <p className="subtitle is-size-3 has-text-warning has-text-centered m-5">
+          { lang === 'english' ? "Featured Projects" : "Proyectos Destacados" }
+        </p>
+        <div className="container columns m-5 is-multiline is-justify-content-center">
+          { projectsWithImages.map((project, index) => {
+            return (
+              <div className="column container is-one-third" key={index}>
+                <ProjectCard project={project} getProjectId={getProjectId} bgColor="grey-lighter" fontColor='warning' />
+              </div>
+            )
+          })}
+        </div>                
+      </div>
+      <div>
+        <p className="subtitle is-size-3 has-text-warning has-text-centered m-5">
+          { lang === 'english' ? "Other projects" : "Otros proyectos" }
+        </p>
+        <div className='container columns m-5 is-multiline is-justify-content-center'>
+          { projectsWithoutImages.map((project, index) => {
+            return (
+              <div className="column container is-one-third" key={index}>
+                <ProjectCard project={project} getProjectId={getProjectId} bgColor="none" fontColor='white' />
+              </div>
+            )
+          })}
+        </div>
       </div>
     </>
     }

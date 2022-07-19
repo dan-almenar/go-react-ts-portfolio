@@ -67,14 +67,18 @@ function BioPage() {
           { lang === 'english' ?
           <p className="is-size-5">
             You may read and download my resume 
-            <button onClick={() => getStorageFile(resume)} className="btn-as-link">here</button>
+            <button
+              onClick={() => getStorageFile(resume)}
+              className="btn-as-link has-text-warning is-size-5 pl-2">
+                here
+            </button>
           </p> :
           <p className="is-size-5">
             Puedes leer y descargar mi curriculum 
             <button
-            onClick={() => getStorageFile(resume)}
-            className="btn-as-link has-text-warning is-size-5 pl-2">
-              aquí
+              onClick={() => getStorageFile(resume)}
+              className="btn-as-link has-text-warning is-size-5 pl-2">
+                aquí
             </button>
           </p>
           }

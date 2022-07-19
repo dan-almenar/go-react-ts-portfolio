@@ -30,6 +30,10 @@
   width: 60%; 
   height: 60%;
 }
+.white-border {
+  border: 1.5px solid white;
+  border-radius: 8px;
+}
 
 /* animations */
 @keyframes twinkle {
