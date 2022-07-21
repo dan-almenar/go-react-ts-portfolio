@@ -20,6 +20,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Route path="/" element={<App />} />
           <Route path='/admin' element={<App />} />
           <Route path='/bio' element={<App />} />
+          <Route path='/contact' element={<App />} />
           <Route path='/error' element={<ErrorPage />} />
           <Route path='/projects' element={<App/>}>
             <Route path=':id' element={<ProjectDetailPage/>} />

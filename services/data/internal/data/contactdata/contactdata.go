@@ -6,10 +6,12 @@ import (
 )
 
 type Comment struct {
-	Date    int64  `json:"date"`
-	Email   string `json:"email"`
-	Message string `json:"message"`
-	Name    string `json:"name"`
+	Date      int64  `json:"date"`
+	Email     string `json:"email"`
+	Subject   string `json:"subject"`
+	Message   string `json:"message"`
+	FirstName string `json:"firstName"`
+	LastName  string `json:"lastName,omitempty"`
 }
 
 type AllComments []Comment

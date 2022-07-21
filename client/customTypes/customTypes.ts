@@ -26,5 +26,14 @@ type fetchedData = {
     loading: boolean,
 }
 
+type Comment = {
+    firstName: string,
+    lastName?: string,
+    email: string,
+    subject: string,
+    message: string,
+    date: number
+}
 
-export type { Language, socialMedia, AppUser, Err, fetchedData }
+
+export type { Language, socialMedia, AppUser, Err, fetchedData, Comment }

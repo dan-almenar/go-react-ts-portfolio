@@ -91,7 +91,8 @@ function ProjectsPage() {
 
   return (
     <>
-    <div className='hero is-fullheight is-dark'>    
+    <div className='hero is-fullheight is-dark'>   
+
     {/* handle loading */}
     { projectsData.loading &&
       <Loading />
@@ -104,6 +105,8 @@ function ProjectsPage() {
         <h1 className="title is-size-2 has-text-warning m-5"> 
           { lang === 'english' ? 'Projects' : 'Proyectos' }
         </h1>
+
+        {/* Portfolio App */}
         <p className="subtitle is-size-5 has-text-left m-5">
           { pageDescription }
         </p>
@@ -120,6 +123,8 @@ function ProjectsPage() {
           </button>
         </p>
       </div>
+
+      {/* proyectos con imágenes */}
       <div>
         <p className="subtitle is-size-3 has-text-warning has-text-centered m-5">
           { lang === 'english' ? "Featured Projects" : "Proyectos Destacados" }
@@ -134,6 +139,8 @@ function ProjectsPage() {
           })}
         </div>                
       </div>
+
+      {/* proyectos sin imágenes */}
       <div>
         <p className="subtitle is-size-3 has-text-warning has-text-centered m-5">
           { lang === 'english' ? "Other projects" : "Otros proyectos" }
