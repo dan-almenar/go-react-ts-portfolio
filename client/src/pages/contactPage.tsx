@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Comment } from '../../customTypes/customTypes'
+import { Comment, socialMedia } from '../../customTypes/customTypes'
+import ContactIcons from '../components/contact/ContactIcons'
 import { StoreContext } from '../customHooks/store/useStore'
 
 function ContactPage() {
@@ -11,6 +12,29 @@ function ContactPage() {
         setRemainingCharacters(600 - e.target.value.length)
     }
 
+    const rrss: socialMedia[] = [
+        {
+            name: 'LinkedIn',
+            link: 'https://www.linkedin.com/in/daniel-almenar-williams/'
+        },
+        {
+          name: 'Github',
+          link: 'https://github.com/dan-almenar'
+        },
+        // {
+        //   name: 'Twitter',
+        //   link: 'https://twitter.com/????????' // to be created
+        // },
+        {
+          name: 'Youtube',
+          link: 'https://www.youtube.com/c/DanAlmenar'
+        },
+        {
+          name: 'Medium',
+          link: 'https://medium.com/@danielalmenar'
+        }
+      ]
+
     // manejo de redireccionamiento a Home
     const navigate = useNavigate()
     const [isSuccess, setIsSuccess] = useState(false)
@@ -19,6 +43,10 @@ function ContactPage() {
         isSuccess && redirectTimeout > 0 && setInterval(() => setRedirectTimeout(redirectTimeout - 1), 1000)
         redirectTimeout === 0 && navigate('/')
     }, [isSuccess, redirectTimeout])
+    const cancelRedirect = () => {
+        setIsSuccess(false)
+        setRedirectTimeout(10)
+    }
 
     // form submit handler
     const submit = async (e: any) => {
@@ -51,6 +79,12 @@ function ContactPage() {
         }
         return
     }
+    // form cancel handler
+    const clearForm = () => {
+        const form = document.getElementById('contact-form') as HTMLFormElement
+        form.reset()
+        setRemainingCharacters(600)
+    }
 
   return (
     <>
@@ -66,8 +100,8 @@ function ContactPage() {
             </p>
         </div>
         <br />
-        <div className="container box has-background-info-light m-5">
-            <form onSubmit={(e) => submit(e) } action="submit" method="post">
+        <div className="container box has-background-info-light">
+            <form id='contact-form' onSubmit={(e) => submit(e) } action="submit" method="post">
                 <div className="field is-horizontal">
                     <div className="field-label is-normal">
                         <label className="label">
@@ -154,7 +188,7 @@ function ContactPage() {
                         </p>
                         {/* clear form */}
                         <p className="control">
-                            <button className="button is-light">
+                            <button onClick={() => clearForm()} className="button is-light">
                                 { lang === 'english' ? 'Cancel' : 'Cancelar' }
                             </button>
                         </p>
@@ -162,7 +196,13 @@ function ContactPage() {
                 </div>
             </form>
         </div>
+        <section className="section has-background-info">
+        <div className="box has-background-info-light">
+            <ContactIcons brands={rrss} />
         </div>
+        </section>
+
+        </div>        
         )}
         { isSuccess && (
             <div className='hero-body'>
@@ -175,6 +215,9 @@ function ContactPage() {
                         { lang === 'english' ? `You will be redirected to the home page in ${redirectTimeout} ${redirectTimeout <= 1 ? "seconds" : "second"}`
                         : `Se le redirigirá a la página principal en ${redirectTimeout} ${redirectTimeout <= 1 ? "segundos" : "segundo"}` }    
                     </p>
+                    <button onClick={() => cancelRedirect()} className="button m-5">
+                        { lang === 'english' ? 'Cancel' : 'Cancelar' }
+                    </button>
                 </div>
             </div>
         )}

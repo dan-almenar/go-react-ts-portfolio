@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import { StoreContext } from '../../customHooks/store/useStore'
 import { useNavigate } from 'react-router-dom'
-import ContactIcons from './ContactIcons'
 
 function ProfileCard() {
   const { lang } = useContext(StoreContext)

@@ -1,31 +1,11 @@
 import React, { useContext } from 'react'
 import BioSummary from '../components/home/BioSummary'
-import ContactIcons from '../components/home/ContactIcons'
 import ProfileCard from '../components/home/ProfileCard'
 import { StoreContext } from '../customHooks/store/useStore'
-import { socialMedia } from '../../customTypes/customTypes'
 import { Link } from 'react-router-dom'
 
 const HomePage = (props: any) => {
   const { lang } = useContext(StoreContext)
-  const rrss: socialMedia[] = [
-    {
-      name: 'Github',
-      link: 'https://github.com/dan-almenar'
-    },
-    {
-      name: 'Twitter',
-      link: 'https://twitter.com/schongesagt' // to be created
-    },
-    {
-      name: 'Youtube',
-      link: 'https://www.youtube.com/c/DanAlmenar'
-    },
-    {
-      name: 'Medium',
-      link: 'https://medium.com/@danielalmenar'
-    }
-  ]
 
   return (
     <>
@@ -39,11 +19,6 @@ const HomePage = (props: any) => {
           <Link className='has-text-warning' to={'/bio'}>Bio </Link>
         </p>
       </div>        
-      </div>
-    </section>
-    <section className="section has-background-grey">
-      <div className="box has-background-warning">
-        <ContactIcons brands={rrss} />
       </div>
     </section>
     </>
