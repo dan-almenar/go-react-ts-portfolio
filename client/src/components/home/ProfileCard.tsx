@@ -6,14 +6,10 @@ function ProfileCard() {
   const { lang } = useContext(StoreContext)
   const navigate = useNavigate()
 
-  const handleClick = () => {
-    navigate('/admin')
-  }
-
   return (
     <div className='m-5'>
       <figure className='image is-128x128 m-5'>
-        <img onClick={handleClick} className='' src=".//assets/dan_profile.png" alt="profile pic" />
+        <img onClick={() => navigate('/admin')} className='' src=".//assets/dan_profile.png" alt="profile pic" />
       </figure>
       <p className="is-size-3 has-text-left has-text-grey-light mx-5">
         { lang === 'english' ? 'Hello, I am...' : 'Hola, soy...' }

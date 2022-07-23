@@ -95,12 +95,12 @@ function ContactPage() {
             <h1 className="container title has-text-centered m-5">
                 { lang === 'english' ? 'Contact' : 'Contacto' }
             </h1>
-            <p className="container subtitle is-size-4 has-text-centered m-5">
+            <p className="container subtitle is-size-4 has-text-centered mx-5">
                 { lang === 'english' ? 'Please feel free to leave me a message' : 'Si lo desea, puede dejarme un mensaje' }
             </p>
         </div>
         <br />
-        <div className="container box has-background-info-light">
+        <div className="container box has-background-info-light mx-5">
             <form id='contact-form' onSubmit={(e) => submit(e) } action="submit" method="post">
                 <div className="field is-horizontal">
                     <div className="field-label is-normal">
@@ -197,6 +197,11 @@ function ContactPage() {
             </form>
         </div>
         <section className="section has-background-info">
+        <p className="container subtitle is-size-4 has-text-centered">
+            { lang === 'english' ?
+            'You may also find me on the following platforms:'
+            : 'Puede encontrarme en las siguientes plataformas:'}
+        </p>
         <div className="box has-background-info-light">
             <ContactIcons brands={rrss} />
         </div>

@@ -2,8 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
-import AdminPage from './pages/admin'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { StoreProvider } from './customHooks/store/useStore'
 import { AuthProvider } from './customHooks/auth/useAuth'
 import Error404Page from './pages/error404Page'
@@ -20,6 +19,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Route path="/" element={<App />} />
           <Route path='/admin' element={<App />} />
           <Route path='/bio' element={<App />} />
+          <Route path='/blog' element={<App />} />
           <Route path='/contact' element={<App />} />
           <Route path='/error' element={<ErrorPage />} />
           <Route path='/projects' element={<App/>}>
