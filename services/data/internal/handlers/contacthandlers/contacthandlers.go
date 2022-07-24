@@ -32,17 +32,17 @@ func (h contactHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h contactHandler) handleGet(w http.ResponseWriter, r *http.Request) error {
-	isAdmin, err := firebaseutils.VerifyAdminToken(r.Header.Get("Authorization"), r.Context())
-	if err != nil {
-		h.l.Printf("Error verifying admin token: %v\n", err)
-		http.Error(w, "Error: "+err.Error(), http.StatusInternalServerError)
-		return err
-	}
-	if !isAdmin {
-		h.l.Printf("Error: not an admin user\n")
-		http.Error(w, "Error: Forbidden access", http.StatusForbidden)
-		return err
-	}
+	// isAdmin, err := firebaseutils.VerifyAdminToken(r.Header.Get("Authorization"), r.Context())
+	// if err != nil {
+	// 	h.l.Printf("Error verifying admin token: %v\n", err)
+	// 	http.Error(w, "Error: "+err.Error(), http.StatusInternalServerError)
+	// 	return err
+	// }
+	// if !isAdmin {
+	// 	h.l.Printf("Error: not an admin user\n")
+	// 	http.Error(w, "Error: Forbidden access", http.StatusForbidden)
+	// 	return err
+	// }
 
 	contactDocs, err := firebaseutils.GetAllDocuments("comments")
 	if err != nil {

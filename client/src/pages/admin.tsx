@@ -1,13 +1,15 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Loading from '../components/layout/Loading'
+import { useGet } from '../customHooks/api/useAPI'
 import { AuthContext } from '../customHooks/auth/useAuth'
 import { StoreContext } from '../customHooks/store/useStore'
-import { logInAppUser } from '../utils/firebaseUtils/authUtils'
+import { fetchedData } from '../../customTypes/customTypes'
+import DisplayComments from '../components/admin/DisplayComments'
 
 function AdminPage() {
     const { lang } = useContext(StoreContext)
-    const { user, logInUser } = useContext(AuthContext)
+    const { user, logInUser, getUser } = useContext(AuthContext)
     const navigate = useNavigate()
 
     // manejo de formulario
@@ -21,17 +23,18 @@ function AdminPage() {
         logInUser(email, password)
     }
 
+    // funcionalidad para usuario verificado
     useEffect(() => {
-        if (user.userData) {
-            setIsLoading(false)
-            console.log(user.userData)
-        }
-    }, [user])
+        user.isUser && setIsLoading(false)
+    })
+    const [loadComments, setLoadComments] = useState(false)
 
   return (
       <div className='hero is-fullheight is-dark fade-in'>
           <div className="m-5 has-text-centered">
-              <h1 className='title'>Admin Dashboard</h1>
+              <h1 className='title'>
+                { lang === 'english' ? 'Admin Dashboard' : 'Panel de Administración' }
+              </h1>
                 { !user.isUser && !isLoading &&
                 <>
                     <p className="subtitle m-5">
@@ -76,6 +79,19 @@ function AdminPage() {
                     { lang === 'english' ? 'Welcome back, ' : 'Bienvenido, ' }
                     { user.userData.email }
                 </p>
+                { loadComments &&
+                    <div className="m-5">
+                        <DisplayComments />
+                    </div>
+                }
+                <div className="m-5">
+                    <button onClick={() => setLoadComments(!loadComments)} className="button">
+                        { lang === 'english' && loadComments && 'Hide comments' }
+                        { lang === 'spanish' && loadComments && 'Ocultar comentarios' }
+                        { lang === 'english' && !loadComments && 'Show comments' }
+                        { lang === 'spanish' && !loadComments && 'Mostrar comentarios' }
+                    </button>
+                </div>
                 </>
                 }
                 { isLoading &&

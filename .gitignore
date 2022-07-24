@@ -1,2 +1,5 @@
 #firebase config:
 client/src/utils/firebaseUtils/firebaseConfig.tsx
+
+#firestore rules:
+client/rules.txt
