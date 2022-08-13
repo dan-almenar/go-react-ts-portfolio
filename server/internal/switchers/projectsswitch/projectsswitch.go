@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	projectsURL = "http://localhost:5000/projects"
+	projectsURL = "https://database-plp22s5ufa-uc.a.run.app/projects"
 )
 
 type projectsHandler struct {

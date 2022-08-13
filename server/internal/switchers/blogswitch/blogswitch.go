@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	blogURL = "http://localhost:5000/blog"
+	blogURL = "https://database-plp22s5ufa-uc.a.run.app/blog"
 )
 
 type blogHandler struct {

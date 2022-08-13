@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	bioURL = "http://localhost:5000/bio"
+	bioURL = "https://database-plp22s5ufa-uc.a.run.app/bio"
 )
 
 type bioHandler struct {

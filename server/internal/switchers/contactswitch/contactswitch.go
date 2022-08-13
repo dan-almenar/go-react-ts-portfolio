@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	contactURL = "http://localhost:5000/contact"
+	contactURL = "https://database-plp22s5ufa-uc.a.run.app/contact"
 )
 
 type contactHandler struct {

@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	adminURL = "http://localhost:5000/admin"
+	adminURL = "https://database-plp22s5ufa-uc.a.run.app/admin"
 )
 
 type adminHandler struct {
