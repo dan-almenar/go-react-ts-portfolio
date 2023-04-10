@@ -12,8 +12,8 @@ function BioSummary() {
         I'm a self-taught software developer with a passion for learning new technologies and building things that help people.
     </p>
     <p>
-        I'm currently working at <a className='has-text-warning' target="_blank" href="https://www.epam.com/">EPAM </a>
-        as a Frontend Engineer involved in large scale projects for high profile international clients.
+        I'm currently open for work. In my last job at <a className='has-text-warning' target="_blank" href="https://www.epam.com/">EPAM </a>
+        I served as a Frontend Engineer involved in large scale projects for high profile international clients.
     </p>    
     </>
     }
@@ -24,8 +24,8 @@ function BioSummary() {
         Soy un desarrollador de software autodidacta con una pasión por aprender nuevas tecnologías y construir cosas que ayuden a la gente.
     </p>
     <p>
-        Actualmente trabajo en <a className='has-text-warning' target="_blank" href="https://www.epam.com/">EPAM </a>
-        como desarrollador Frontend en proyectos de gran escala para clientes internacionales de alto perfil.
+        Actualmente abierto a nuevas ofertas. En mi último trabajo, en <a className='has-text-warning' target="_blank" href="https://www.epam.com/">EPAM </a>
+        me desempeñé como desarrollador Frontend en proyectos de gran escala para clientes internacionales de alto perfil.
     </p>
     </>
     }
